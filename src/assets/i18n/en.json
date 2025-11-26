@@ -1,0 +1,84 @@
+{
+  "---------------- THIS IS A COMMENT : Navbar (TBT)  -------------": "",
+  "Navbar-Brand": "晴天エタン Ethan Fairweather",
+  "Navigate-Home": "Home",
+  "Navigate-Education": "Education",
+  "Navigate-Portfolio": "Portfolio",
+  "Navigate-Blog": "Blog",
+  "Navigate-Login": "Login",
+  "Navigate-Sign-Up": "Sign Up",
+  "Navigate-Write": "Write",
+  "Navigate-Logout": "Logout",
+  "Navigate-Contact": "Contact",
+
+  "---------------- THIS IS A COMMENT : SubNavbar (TBT)  -------------": "",
+  "Subnavigate-Blog": "犬の大将's Blog",
+  "Subnavigate-Endorsing": "",
+
+  "---------------- THIS IS A COMMENT : Home Component (TBT)  -------------": "",
+  "HomeComponent-MOTIVATION": "貴方に守るものあるか",
+  "HomeComponent-INTRO": "My name is Ethan Burrow Fairweather",
+  "HomeComponent-ENTREPRENEUR": "Entrepreneur",
+  "HomeComponent-DEVELOPER": "Fullstack NodeJS/ExpressJS Web Developer",
+  "HomeComponent-BUSINESS": "Business Analyst",
+
+  "---------------- THIS IS A COMMENT : Login Component (TBT)  -------------": "",
+  "LoginComponent-TITLE": "Blog Login",
+  "LoginComponent-BUTTON": "Login",
+  "LoginComponent-USERNAME": "Username",
+  "LoginComponent-PASSWORD": "Password",
+
+  "---------------- THIS IS A COMMENT : Contact Component (TBT) -------------": "",
+  "ContactComponent-TITLE": "Contact Me",
+  "ContactComponent-FIRSTNAME": "First Name",
+  "ContactComponent-LASTNAME": "Last Name",
+  "ContactComponent-EMAIL": "Email",
+  "ContactComponent-SUBJECT": "Subject",
+  "ContactComponent-MESSAGE": "Message",
+
+  "---------------- THIS IS A COMMENT : Social Media Contact Component (TBT) -------------": "",
+  "---------------- Facebook -------------": "",
+  "Social-Media-Name-1": "Facebook",
+  "Social-Url-1": "https://facebook.com/eburrowfair",
+  "Social-Img-Url-1": "../../../../assets/images/facebook.svg",
+
+  "---------------- X -------------": "",
+  "Social-Media-Name-2": "X",
+  "Social-Url-2": "https://twitter.com/togamaru_sa",
+  "Social-Img-Url-2": "../../../../assets/images/x.svg",
+
+  "---------------- Snapchat -------------": "",
+  "Social-Media-Name-3": "Snapchat",
+  "Social-Url-3": "https://snapchat.com/add/inunobushi",
+  "Social-Img-Url-3": "../../../../assets/images/snapchat.svg",
+
+  "---------------- BlueSky -------------": "",
+  "Social-Media-Name-4": "BlueSky",
+  "Social-Url-4": "https://bsky.app/profile/inunotaisho.bsky.social",
+  "Social-Img-Url-4": "../../../../assets/images/bsky.svg",
+   "---------------- Tik Tok -------------": "",
+
+  "Social-Media-Name-5": "Tik Tok",
+  "Social-Url-5": "https://tiktok.com/@inunotaisho8",
+  "Social-Img-Url-5": "../../../../assets/images/tiktok.svg",
+
+        "---------------- Github -------------": "",
+  "Social-Media-Name-6": "Github",
+  "Social-Url-6": "https://github.com/inunotaisho",
+  "Social-Img-Url-6":"../../../../assets/images/github-mark-white.svg",
+
+
+  "---------------- THIS IS A COMMENT : Page Not Found Component  (TBT)  -------------": "",
+  "PageNotFoundComponent-ERROR_TEXT": "Error 404 - Page Not Found",
+
+  "---------------- THIS IS A COMMENT : LanguagePicker Component (TBT) -------------": "",
+  "LanguagePickerComponent-TITLE": "Language Change",
+  "LanguagePickerComponent-FAILED_TO_CHANGE": "Failed to change language",
+  "LanguagePickerComponent-LANGUAGE_TEXT": "Language:",
+
+  "---------------- THIS IS A COMMENT : Errors  (TBT)  -------------": "",
+  "ErrorCodes-GENERIC_TITLE": "Error",
+  "ErrorCodes-GENERIC_UNKNOWN": "Unknown error occurred",
+  "ErrorCodes-GENERIC_FORBIDDEN": "Access denied"
+
+}

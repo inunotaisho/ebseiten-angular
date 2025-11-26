@@ -1,0 +1,131 @@
+$color_1: #fff;
+$color_2: #2b3a42;
+$background-color_1: #f5f5f5;
+$background-color_2: #2b3a42;
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/@mdi/font/css/materialdesignicons.min.css";
+@import "../node_modules/suitcss-utils-flex/index.css";
+@import "../src/assets/styles/typography.scss";
+body {
+	background-color: $background-color_1 !important;
+}
+.marginBottom {
+	margin-bottom: 125px;
+}
+.list-group-item {
+	background-color: $background-color_1 !important;
+}
+.personalimgpos {
+	display: flex;
+	justify-content: space-around;
+	height: auto;
+}
+.text {
+	margin-top: 1rem;
+}
+.text-around {
+	display: flex;
+	justify-content: space-around;
+}
+.text-between {
+	display: flex;
+	justify-content: space-between;
+}
+.easterEgg {
+	color: $color_1;
+}
+.btn-padding {
+	padding-top: 20px;
+}
+.bg-custom {
+	background-color: $background-color_2 !important;
+}
+.head-ctm {
+	background-color: $background-color_2 !important;
+	color: $color_1;
+}
+@media (min-width: 1149px) {
+	.core-pad {
+		padding-top: 50px;
+		padding-bottom: 75px;
+	}
+	.personalimg {
+		height: 300px;
+		width: 299.33px;
+		border-radius: 8px;
+	}
+
+		.social-container-mobile {
+			display: none;
+		}
+		.social-container {
+			z-index: 100000;
+			position: absolute;
+			width: 100%;
+			justify-content: center;
+			display: inline-flex;
+			.importantpos {
+				display: flex;
+				justify-content: space-evenly;
+				padding-top: 20px;
+				width: 100%;
+				a.socicon {
+					color: $color_1;
+					text-decoration: none;
+				}
+				a.pdf {
+					color: $color_1;
+					text-decoration: none;
+				}
+			}
+		}
+
+		.social-container-mobile {
+			display: none;
+		}
+		a.sociconMobile {
+			color: $color_2 !important;
+			text-decoration: none;
+		}
+		a.socicon {
+			color: $color_2 !important;
+			text-decoration: none;
+		}
+		a.pdf {
+			color: $color_2 !important;
+			text-decoration: none;
+		}
+
+	.mottoposMobile {
+		display: none;
+		a.socionMobile {
+			display: none;
+		}
+	}
+	.importantpos {
+		display: flex;
+		justify-content: space-around;
+		padding-top: 20px;
+		.paddingLeft {
+			padding-left: 150px;
+		}
+		.paddingRight {
+			padding-right: 150px;
+		}
+	}
+}
+@media (min-width: 992px) and (max-width: 1148px) {
+	.core-pad {
+		padding-top: 50px;
+		padding-bottom: 75px;
+	}
+
+}
+@media (max-width: 991px) {
+	.core-pad {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+}

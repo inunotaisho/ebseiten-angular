@@ -1,0 +1,24 @@
+<div class=" social-contact-margin">
+<div class="row">
+  <div class="offset-lg-1 col-lg-10">
+    <div class="card panel-default head-ctm">
+      <div class="head-ctm">
+        <div class="row">
+          <div class="offset-lg-2 col-lg-8">
+            <div class="social-list">
+              <div *ngFor="let p of socialMediaItems" class="social-item">
+                <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer"
+                  class="social-link">
+                  <div class="social-icon">
+                    <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

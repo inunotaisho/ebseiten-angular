@@ -1,0 +1,55 @@
+$color_1: rgba(0,0,0,0.87);
+$color_2: #fff;
+$font-family_1: 'Northern';
+
+.navbar-default {
+	color: $color_1 !important;
+}
+.navbar-inverse {
+	.navbar-brand {
+		color: $color_2 !important;
+	}
+	.navbar-nav {
+		>li {
+			>a {
+				color: $color_2 !important;
+			}
+		}
+	}
+}
+.hidden {
+	display: none;
+}
+#about-me {
+	height: 20px;
+	border-radius: 50%;
+}
+@media (min-width: 1149px) {
+	.mobile {
+		font-family: $font-family_1;
+	}
+	.logotext {
+		font-family: $font-family_1;
+	}
+}
+@media (min-width: 769px) and (max-width: 1148px) {
+	.mobile {
+		font-size: 14px;
+		font-family: $font-family_1;
+	}
+	.logotext {
+		font-size: 14px;
+		font-family: $font-family_1;
+	}
+}
+@media (max-width: 768px) {
+	.mobile {
+		font-size: 12px;
+		font-weight: bolder;
+		font-family: $font-family_1;
+	}
+	.logotext {
+		font-size: 12px;
+		font-family: $font-family_1;
+	}
+}

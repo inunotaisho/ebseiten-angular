@@ -1,0 +1,60 @@
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  background: #f5f6f8; /* light grey background */
+  border-radius: 999px; /* full pill shape */
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.social-link:hover {
+  background: #e8e9eb;
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.social-text {
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.social-link:hover .social-text {
+  color: #007bff; /* make text blue on hover */
+}
+
+

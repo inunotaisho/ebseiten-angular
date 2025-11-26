@@ -1,0 +1,142 @@
+$color_1: #4a4a4a;
+$color_2: #a9a9a9;
+$font-family_1: 'PT Serif', serif;
+$font-family_2: 'Montserrat', sans-serif;
+$background-color_1: #fff;
+
+.sidebar-post {
+	margin-top: 25px;
+}
+.blogPadd {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	.blogTop {
+		text-align: center;
+	}
+}
+.post-content {
+	p {
+		margin-bottom: 20px;
+		font-family: $font-family_1;
+	}
+}
+.no-post {
+	p {
+		text-align: center;
+	}
+}
+@media (min-width: 1149px) {
+	.content-post {
+		padding: 24px 35px 30px;
+		padding-left: 40px;
+		padding-right: 40px;
+		background-color: $background-color_1;
+		border: 1px solid #e8e8e8;
+		margin-bottom: 20px;
+	}
+	.post-content {
+		margin-top: 30px;
+		p {
+			font-size: 16px;
+			line-height: 28px;
+		}
+	}
+	.sidebar {
+		background: #fff;
+		border: solid 1px #e8e8e9;
+		padding: 30px 25px;
+		h2 {
+			font-family: $font-family_2;
+			font-size: 11px;
+			font-weight: 500;
+			letter-spacing: 1.4px;
+			text-align: left;
+			margin: 0;
+			text-transform: uppercase;
+		}
+		.sidebar-posts {
+			.sidebar-post {
+				margin-top: 25px;
+				.sidebar-post-head {
+					font-family: $font-family_2;
+					font-size: 15px;
+					font-weight: 600;
+					line-height: 1.46;
+					text-align: left;
+					color: $color_1;
+					margin: 0 0 2px;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 992px) and (max-width: 1148px) {
+	.content-post {
+		padding: 24px 35px 30px;
+		padding-left: 40px;
+		padding-right: 40px;
+		background-color: $background-color_1;
+		border: 1px solid #e8e8e8;
+		margin-bottom: 20px;
+	}
+	.post-content {
+		margin-top: 30px;
+		p {
+			font-size: 14px;
+			margin-top: 10px;
+			line-height: 20px;
+		}
+	}
+	.sidebar {
+		background: #fff;
+		border: solid 1px #e8e8e9;
+		padding: 30px 25px;
+		h2 {
+			font-family: $font-family_2;
+			font-size: 11px;
+			font-weight: 500;
+			letter-spacing: 1.4px;
+			text-align: left;
+			color: $color_2;
+			margin: 0;
+			text-transform: uppercase;
+		}
+		.sidebar-posts {
+			.sidebar-post {
+				margin-top: 25px;
+				.sidebar-post-head {
+					font-family: $font-family_2;
+					font-size: 13px;
+					font-weight: 550;
+					line-height: 1;
+					text-align: left;
+					color: $color_1;
+					margin: 0 0 2px;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 991px) {
+	.content-post {
+		padding: 12px 17.5px 15px;
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color: $background-color_1;
+		border: 0.5px solid #e8e8e8;
+		margin-bottom: 10px;
+	}
+	.post-content {
+		margin-top: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		p {
+			font-size: 12px;
+			margin-top: 10px;
+			line-height: 18px;
+		}
+	}
+	.sidebar {
+		display: none;
+	}
+}

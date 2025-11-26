@@ -1,0 +1,12 @@
+<div class="header">
+  <div class="social-list">
+    <div *ngFor="let p of socialMediaItems" class="social-item"
+      [ngClass]="{'hidden': p.visible !== undefined && !p.visible}">
+      <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
+        <div class="social-icon">
+          <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

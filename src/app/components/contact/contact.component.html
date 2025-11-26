@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class=" container">
+  <div class="row">
+    <app-social-media-contact>
+    </app-social-media-contact>
+  </div>
+</div>
+<div class="contact-margin">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-1 col-lg-10">
+        <!-- Form when not complete -->
+        <div *ngIf="showForm" class="card panel-default">
+          <div class="card-header head-ctm">
+            <h2 class="card-title">{{'ContactComponent-TITLE'| translate}}</h2>
+          </div>
+          <div class="card-body">
+            <form #contactForm="ngForm" method="POST" action="/contact" (ngSubmit)="onSubmit(contactForm)"
+              id="inputform">
+              <div class="form-group">
+                <input type="text" name="_gotcha" style="display: none">
+                <!--<label>Contact</label>
+                              <select class="form-control" required>{{user.email}}</select>-->
+                <fieldset>
+                  <label class="margins-and-font" id="margin-compensate-1"
+                    for="firstName">{{'ContactComponent-FIRSTNAME'|
+                    translate}}</label>
+                  <input class="form-control" type="text" id="firstName" name="firstName" ngModel required
+                    #firstName="ngModel">
+                  <label class="margins-and-font" for="lastName">{{'ContactComponent-LASTNAME'| translate}}</label>
+                  <input class="form-control" type="text" id="lastName" name="lastName" ngModel required
+                    #lastName="ngModel">
+                  <label class="margins-and-font" for="email">{{'ContactComponent-EMAIL'| translate}}</label>
+                  <div class="form-group" [ngClass]="{ 'has-error': submitted && !valid }">
+                    <input class="form-control" id="email" type="email" name="email" ngModel required #email="ngModel">
+                    <p *ngIf="errors && errors.uniqueUsername">Email is not valid</p>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <label class="margins-and-font" id="margin-compensate-2" for="subject">{{'ContactComponent-SUBJECT'|
+                    translate}}</label>
+                  <input class="form-control" id="subject" type="text" name="subject" ngModel required
+                    #subject="ngModel">
+                  <label class="margins-and-font" for="message">{{'ContactComponent-MESSAGE'| translate}}</label>
+                  <textarea class="form-control" id="message" name="message" rows="6" required ngModel></textarea>
+                </fieldset>
+                <div class="btn-padding">
+                  <button class="btn btn-secondary head-ctm" id="submit" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Form when not complete end -->
+        <app-success-failure-message>
+        </app-success-failure-message>
+      </div>
+    </div>
+  </div>
+</div>
+<app-language-picker></app-language-picker>
+<!-- <return-button class="hidden-btn"></return-button> -->

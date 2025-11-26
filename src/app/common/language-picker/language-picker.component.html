@@ -1,0 +1,21 @@
+<div id="language-picker-pushpin" class="pinned text-size">
+  <div id="currentLang">
+    <div>
+      {{'LanguagePickerComponent-LANGUAGE_TEXT'| translate}}
+    </div>
+    <div (click)="isCollapsed = !isCollapsed">
+      <a class='dropdown-button selected-language text-size' data-activates='language-picker'>
+        {{selectedLanguage?.name}}
+      </a>
+    </div>
+  </div>
+
+  <ng-template [ngIf]="selectedLanguage">
+    <ul id='language-picker langContainer' class='dropdown-content' [collapse]="!isCollapsed">
+      <li *ngFor="let p of languages" class="text-size-select" (click)="changeLangTo(p)"
+        [ngClass]="{'active' : p.languageCode === selectedLanguage?.languageCode }">
+        {{p.name}}
+      </li>
+    </ul>
+  </ng-template>
+</div>

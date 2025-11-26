@@ -1,0 +1,43 @@
+<!-- Form when sucesully sent -->
+<div *ngIf="showSuccessMsg">
+  <div class="offset-md-3 col-md-8">
+    <h1>Message has sucessfully been sent</h1>
+    <h2> Check me out on social media too!!!</h2>
+    <div>
+      <ul class="social-list">
+        <li *ngFor="let p of socialMediaItems" class="social-item">
+          <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
+            <div class="social-icon">
+              <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+            </div>
+            <span class="social-text">{{ p.socialMediaName | translate }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Form when sucesully sent end-->
+<!-- Error when sending form -->
+<div *ngIf="showErrorMsg">
+  <div class="offset-md-3 col-md-7">
+    <h1>Oops!! Something is going wrong!!</h1>
+  </div>
+  <div class="offset-md-3 col-md-7">
+    <h1>Please refresh page and try again</h1>
+  </div>
+  <h2>Or check me out on social media!</h2>
+  <div>
+    <ul class="social-list">
+      <li *ngFor="let p of socialMediaItems" class="social-item">
+        <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
+          <div class="social-icon">
+            <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+          </div>
+          <span class="social-text">{{ p.socialMediaName | translate }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Error when sending form -->

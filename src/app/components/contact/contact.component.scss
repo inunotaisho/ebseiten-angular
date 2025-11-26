@@ -1,0 +1,50 @@
+$color_1: #fff;
+$font-family_1: 'Brushtagi';
+$font-family_2: 'Northern';
+
+.header {
+  position:absolute;
+}
+
+h2.card-title {
+	font-family: $font-family_1;
+	font-size: 2rem;
+}
+label.margins-and-font {
+	font-family: $font-family_2;
+	font-size: 18pt;
+	margin-top: 12.5px;
+	margin-bottom: 12.5px;
+}
+#margin-compensate-1 {
+	margin-top: 9px !important;
+}
+#margin-compensate-2 {
+	margin-top: 6px !important;
+}
+#submit {
+	font-size: 1rem;
+	font-family: $font-family_1;
+}
+
+@media (min-width: 1149px) {
+
+
+.contact-margin{
+  margin-bottom: 40px;
+}
+
+}
+@media (min-width: 992px) and (max-width: 1148px) {
+
+.contact-margin{
+  margin-bottom: 40px;
+}
+
+}
+@media (max-width: 991px) {
+
+.contact-margin{
+  margin-bottom: 10px;
+}
+}

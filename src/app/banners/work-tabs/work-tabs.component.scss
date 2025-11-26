@@ -1,0 +1,25 @@
+$font-family_1: 'Santoriu';
+$text-color_1: #2b3a42;
+
+a {
+  color: $text-color_1;
+  font-size: 18pt;
+}
+
+#work-tabs {
+  margin-top: 100px;
+
+  .pills {
+    font-family: $font-family_1;
+
+  }
+}
+
+@media (max-width: 991px) {
+  #work-tabs {
+    margin-top: 75px;
+    .pills {
+      font-family: $font-family_1;
+    }
+  }
+}

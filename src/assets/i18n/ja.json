@@ -1,0 +1,85 @@
+{
+    "---------------- THIS IS A COMMENT : Navbar (TBT)  -------------": "",
+    "Navbar-Brand":"晴天闘牙丸 Ethan Fairweather",
+    "Navigate-Home":"ホーム",
+    "Navigate-Education":"教育",
+    "Navigate-Portfolio":"作品リスト",
+    "Navigate-Blog":"ブログ",
+    "Navigate-Login":"ログイン",
+    "Navigate-Sign-Up": "Registrarse",
+    "Navigate-Write":"刻する",
+    "Navigate-Logout":"ログアウト",
+    "Navigate-Contact":"お問い合わせ",
+
+    "---------------- THIS IS A COMMENT : SubNavbar (TBT)  -------------": "",
+    "Subnavigate-Blog":"闘牙丸のブログ",
+    "Subnavigate-Endorsing":"",
+
+    "---------------- THIS IS A COMMENT : Home Component (TBT)  -------------": "",
+    "HomeComponent-MOTIVATION":"To have someone worth dying for is something to be proud of...",
+    "HomeComponent-INTRO":"名前は晴天闘牙丸(とうがまる)もしくフェアウェザエタン",
+    "HomeComponent-ENTREPRENEUR":"企業家",
+    "HomeComponent-DEVELOPER":"インターネット開発者",
+    "HomeComponent-BUSINESS":"ビジネスアナリスト",
+
+    "---------------- THIS IS A COMMENT : Login Component (TBT)  -------------": "",
+    "LoginComponent-TITLE":"ブログ ログイン",
+    "LoginComponent-BUTTON":"ログイン",
+    "LoginComponent-USERNAME":"",
+    "LoginComponent-PASSWORD":"パスワード",
+
+    "---------------- THIS IS A COMMENT : Contact Component (TBT) -------------":"",
+
+    "ContactComponent-TITLE":"お問い合わせフォーム",
+    "ContactComponent-FIRSTNAME": "名",
+    "ContactComponent-LASTNAME": "姓",
+    "ContactComponent-EMAIL": "メール",
+    "ContactComponent-SUBJECT": "名字",
+    "ContactComponent-MESSAGE": "お問い合わせ内容",
+
+      "---------------- THIS IS A COMMENT : Social Media Contact Component (TBT) -------------": "",
+
+  "---------------- Facebook -------------": "",
+  "Social-Media-Name-1": "Facebook",
+  "Social-Url-1": "https://facebook.com/eburrowfair",
+  "Social-Img-Url-1": "../../../../assets/images/facebook.svg",
+
+  "---------------- X -------------": "",
+  "Social-Media-Name-2": "X",
+  "Social-Url-2": "https://twitter.com/togamaru_sa",
+  "Social-Img-Url-2": "../../../../assets/images/x.svg",
+
+  "---------------- Snapchat -------------": "",
+  "Social-Media-Name-3": "Snapchat",
+  "Social-Url-3": "https://snapchat.com/add/inunobushi",
+  "Social-Img-Url-3": "../../../../assets/images/snapchat.svg",
+
+  "---------------- Instagram -------------": "",
+  "Social-Media-Name-4": "Instagram",
+  "Social-Url-4": "https://instagram.com/theinunotaisho",
+  "Social-Img-Url-4": "../../../../assets/images/instagram.svg",
+
+    "---------------- Tik Tok -------------": "",
+  "Social-Media-Name-5": "Tik Tok",
+  "Social-Url-5": "https://tiktok.com/@inunotaisho8",
+  "Social-Img-Url-5": "../../../../assets/images/tiktok.svg",
+
+      "---------------- Github -------------": "",
+  "Social-Media-Name-6": "Github",
+  "Social-Url-6": "https://github.com/inunotaisho",
+  "Social-Img-Url-6":"../../../../assets/images/github-mark-white.svg",
+
+    "---------------- THIS IS A COMMENT : LanguagePicker Component (TBT) -------------":"",
+
+    "LanguagePickerComponent-TITLE":"Language Change",
+    "LanguagePickerComponent-FAILED_TO_CHANGE": "Failed to change language",
+    "LanguagePickerComponent-LANGUAGE_TEXT": "言葉 :",
+
+    "---------------- THIS IS A COMMENT : Page Not Found  (TBT)  -------------": "",
+    "PageNotFound-ERROR_TEXT": "404 - ページが見つかりません。",
+
+    "---------------- THIS IS A COMMENT : Errors  (TBT)  -------------": "",
+    "ErrorCodes-GENERIC_TITLE": "エラーメッセージ",
+    "ErrorCodes-GENERIC_UNKNOWN": "不明なエラーが起こりました",
+    "ErrorCodes-GENERIC_FORBIDDEN": "アクセスは拒します"
+}
