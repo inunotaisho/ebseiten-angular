@@ -23,7 +23,21 @@
       "service": "Lambda"
     }
   },
+  "hosting": {
+    "S3AndCloudFront": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3AndCloudFront"
+    }
+  },
   "parameters": {
+    "AMPLIFY_function_sendEmail_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
     "AMPLIFY_function_sendEmail_fromEmail": {
       "usedBy": [
         {
@@ -49,6 +63,14 @@
       ]
     },
     "AMPLIFY_function_sendEmail_port": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_s3Key": {
       "usedBy": [
         {
           "category": "function",

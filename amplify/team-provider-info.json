@@ -18,8 +18,13 @@
           "fromEmail": "postmaster@ebseiten.com",
           "host": "mail.privateemail.com",
           "pass": "jiTnez-jinca2-rawnof",
-          "port": "587"
+          "port": "587",
+          "deploymentBucketName": "amplify-ebseitenangular-dev-a1f7d-deployment",
+          "s3Key": "amplify-builds/sendEmail-7774495a2b65597a5353-build.zip"
         }
+      },
+      "api": {
+        "contactApi": {}
       }
     }
   }
