@@ -1,0 +1,25 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "toEmail",
+      "environmentVariableName": "TO_EMAIL"
+    },
+    {
+      "cloudFormationParameterName": "fromEmail",
+      "environmentVariableName": "FROM_EMAIL"
+    },
+    {
+      "cloudFormationParameterName": "host",
+      "environmentVariableName": "HOST"
+    },
+    {
+      "cloudFormationParameterName": "pass",
+      "environmentVariableName": "PASS"
+    },
+    {
+      "cloudFormationParameterName": "port",
+      "environmentVariableName": "PORT"
+    }
+  ]
+}
