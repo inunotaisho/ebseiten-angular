@@ -18,8 +18,16 @@
           "host": "mail.privateemail.com",
           "toEmail": "ebfairweather@ebseiten.com",
           "fromEmail": "postmaster@ebseiten.com",
-          "port": "587"
+          "port": "587",
+          "deploymentBucketName": "amplify-ebseitenangular-dev-8ebcc-deployment",
+          "s3Key": "amplify-builds/sendEmail-49664c6d6a30544a434b-build.zip"
         }
+      },
+      "api": {
+        "apidd540842": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   }
