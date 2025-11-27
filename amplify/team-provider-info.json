@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ebseitenangular-dev-8ebcc-authRole",
+      "UnauthRoleArn": "arn:aws:iam::908998900326:role/amplify-ebseitenangular-dev-8ebcc-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::908998900326:role/amplify-ebseitenangular-dev-8ebcc-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ebseitenangular-dev-8ebcc-deployment",
+      "UnauthRoleName": "amplify-ebseitenangular-dev-8ebcc-unauthRole",
+      "StackName": "amplify-ebseitenangular-dev-8ebcc",
+      "StackId": "arn:aws:cloudformation:us-east-2:908998900326:stack/amplify-ebseitenangular-dev-8ebcc/5f383090-cbc1-11f0-8201-0aa0486ee01d",
+      "AmplifyAppId": "d18upvrr8q3hyc"
+    },
+    "categories": {
+      "function": {
+        "sendEmail": {
+          "pass": "jiTnez-jinca2-rawnof",
+          "host": "mail.privateemail.com",
+          "toEmail": "ebfairweather@ebseiten.com",
+          "fromEmail": "postmaster@ebseiten.com",
+          "port": "587"
+        }
+      }
+    }
+  }
+}
