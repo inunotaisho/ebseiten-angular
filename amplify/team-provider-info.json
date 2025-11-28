@@ -10,6 +10,17 @@
       "StackName": "amplify-ebseitenangular-dev-08349",
       "StackId": "arn:aws:cloudformation:us-east-2:908998900326:stack/amplify-ebseitenangular-dev-08349/e6c8f760-cbfd-11f0-ad86-0255b0432423",
       "AmplifyAppId": "d19mf9v6lvcf3u"
+    },
+    "categories": {
+      "function": {
+        "sendEmail": {
+          "port": "587",
+          "host": "mail.privateemail.com",
+          "pass": "jiTnez-jinca2-rawnof",
+          "toEmail": "ebfairweather@ebseiten.com",
+          "fromEmail": "postmaster@ebseiten.com"
+        }
+      }
     }
   }
 }

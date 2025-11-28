@@ -11,5 +11,29 @@
       "StackId": "arn:aws:cloudformation:us-east-2:908998900326:stack/amplify-ebseitenangular-dev-08349/e6c8f760-cbfd-11f0-ad86-0255b0432423",
       "AmplifyAppId": "d19mf9v6lvcf3u"
     }
+  },
+  "function": {
+    "sendEmail": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
+    }
+  },
+  "api": {
+    "api8f8afac5": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
