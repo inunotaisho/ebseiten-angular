@@ -30,7 +30,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/function/sendEmail-cloudformation-template.json",
         "logicalId": "functionsendEmail"
       },
-      "lastPushTimeStamp": "2025-11-28T02:20:04.385Z",
+      "lastPushTimeStamp": "2025-11-28T02:26:20.307Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::908998900326:role/ebseitenangularLambdaRolebe5c7f05-dev",
         "Region": "us-east-2",
@@ -59,7 +59,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/api/api8f8afac5-cloudformation-template.json",
         "logicalId": "apiapi8f8afac5"
       },
-      "lastPushTimeStamp": "2025-11-28T02:20:04.385Z",
+      "lastPushTimeStamp": "2025-11-28T02:26:20.309Z",
       "output": {
         "ApiName": "api8f8afac5",
         "RootUrl": "https://4hexh6tod6.execute-api.us-east-2.amazonaws.com/dev",
@@ -76,7 +76,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/hosting/template.json",
         "logicalId": "hostingS3AndCloudFront"
       },
-      "lastPushTimeStamp": "2025-11-28T02:20:04.385Z",
+      "lastPushTimeStamp": "2025-11-28T02:26:20.310Z",
       "output": {
         "CloudFrontSecureURL": "https://d3in5t5qhkyc1y.cloudfront.net",
         "S3BucketSecureURL": "https://ebseitenangular-20251127201324-hostingbucket-dev.s3.amazonaws.com",
