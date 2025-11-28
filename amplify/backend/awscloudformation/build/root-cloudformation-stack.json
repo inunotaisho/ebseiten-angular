@@ -198,6 +198,53 @@
           "Ref": "UnauthRoleName"
         }
       }
+    },
+    "functionsendEmail": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/function/sendEmail-cloudformation-template.json",
+        "Parameters": {
+          "port": "587",
+          "host": "mail.privateemail.com",
+          "pass": "jiTnez-jinca2-rawnof",
+          "toEmail": "ebfairweather@ebseiten.com",
+          "fromEmail": "postmaster@ebseiten.com",
+          "deploymentBucketName": "amplify-ebseitenangular-dev-08349-deployment",
+          "s3Key": "amplify-builds/sendEmail-7a37542b683833487845-build.zip",
+          "env": "dev"
+        }
+      }
+    },
+    "apiapi8f8afac5": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/api/api8f8afac5-cloudformation-template.json",
+        "Parameters": {
+          "functionsendEmailName": {
+            "Fn::GetAtt": [
+              "functionsendEmail",
+              "Outputs.Name"
+            ]
+          },
+          "functionsendEmailArn": {
+            "Fn::GetAtt": [
+              "functionsendEmail",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "hostingS3AndCloudFront": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-ebseitenangular-dev-08349-deployment/amplify-cfn-templates/hosting/template.json",
+        "Parameters": {
+          "bucketName": "ebseitenangular-20251127201324-hostingbucket",
+          "env": "dev"
+        }
+      }
     }
   }
 }

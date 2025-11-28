@@ -18,8 +18,16 @@
           "host": "mail.privateemail.com",
           "pass": "jiTnez-jinca2-rawnof",
           "toEmail": "ebfairweather@ebseiten.com",
-          "fromEmail": "postmaster@ebseiten.com"
+          "fromEmail": "postmaster@ebseiten.com",
+          "deploymentBucketName": "amplify-ebseitenangular-dev-08349-deployment",
+          "s3Key": "amplify-builds/sendEmail-7a37542b683833487845-build.zip"
         }
+      },
+      "api": {
+        "api8f8afac5": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   }
