@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  api_server: `https://4hexh6tod6.execute-api.us-east-2.amazonaws.com/dev`,
-  host:`https://d3in5t5qhkyc1y.cloudfront.net`
+  api_server: `https://v2jsmycg4tcgjrdr32tnvwhuum0xlzqh.lambda-url.us-east-2.on.aws/`,
 };
 
 /*
