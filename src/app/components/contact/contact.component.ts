@@ -41,7 +41,7 @@ export class ContactComponent implements OnDestroy {
 
   sendEmail(contactForm: NgForm) {
     const data = contactForm.value
-    return this.http.post(AppSettings.API_SERVER + '/sendEmail', data, { observe: 'response' });
+    return this.http.post(AppSettings.API_SERVER + '/send-email', data, { observe: 'response' });
   }
 
   onSubmit(contactForm: NgForm) {
