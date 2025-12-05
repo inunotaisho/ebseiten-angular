@@ -1,0 +1,90 @@
+{
+  "api": {
+    "api5e6f769a": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "sendEmail": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3AndCloudFront"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_sendEmail_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_fromEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_host": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_pass": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_port": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_toEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    }
+  }
+}

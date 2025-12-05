@@ -1,0 +1,34 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-contactapi-dev-a2efc-authRole",
+      "UnauthRoleArn": "arn:aws:iam::908998900326:role/amplify-contactapi-dev-a2efc-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::908998900326:role/amplify-contactapi-dev-a2efc-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-contactapi-dev-a2efc-deployment",
+      "UnauthRoleName": "amplify-contactapi-dev-a2efc-unauthRole",
+      "StackName": "amplify-contactapi-dev-a2efc",
+      "StackId": "arn:aws:cloudformation:us-east-2:908998900326:stack/amplify-contactapi-dev-a2efc/6b8c4aa0-d1fe-11f0-9aee-065cce13c1a3",
+      "AmplifyAppId": "d2456zpwrwl4n7"
+    },
+    "categories": {
+      "function": {
+        "sendEmail": {
+          "port": "587",
+          "toEmail": "ebfairweather@ebseiten.com",
+          "fromEmail": "postmaster@ebseiten.com",
+          "pass": "memJac-nesqoq-qotdy8",
+          "host": "mail.privateemail.com",
+          "deploymentBucketName": "amplify-contactapi-dev-a2efc-deployment",
+          "s3Key": "amplify-builds/sendEmail-3846622f4f4965594d58-build.zip"
+        }
+      },
+      "api": {
+        "api5e6f769a": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  }
+}
