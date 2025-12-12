@@ -6,3 +6,4 @@ export * from './social-contact.model';
 export * from './portfolio-content.model';
 export * from './political-work.model';
 export * from './web-content.model';
+export * from './contact';

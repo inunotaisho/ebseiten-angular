@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguagePickerComponent, NavbarComponent } from "../../common";
-import { JwtResponse, User } from '../../models';
+import { JwtResponse, IUser } from '../../models';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   userForm!: FormGroup;
   user$: Observable<JwtResponse> = EMPTY;
-  user: User = new User();
+  user: IUser = new IUser();
 
   constructor(
     private fb: FormBuilder,
