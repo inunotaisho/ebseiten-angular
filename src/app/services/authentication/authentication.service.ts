@@ -7,7 +7,7 @@ import { tap, catchError, take } from 'rxjs/operators';
 
 import { AppSettings } from './../../common/config';
 import { contentHeaders } from './../../common/headers';
-import { User } from '../../models/user';
+import { IUser } from '../../models/user';
 import { getSingleError } from '../../common/error';
 
 
