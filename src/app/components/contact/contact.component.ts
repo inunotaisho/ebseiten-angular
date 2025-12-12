@@ -1,12 +1,12 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { EMPTY, Observable, of, Subscription, switchMap } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { SocialMediaContactComponent, SuccessFailureMessageComponent } from '../../banners';
-import { AppSettings } from '../../common/config';
 import { LanguagePickerComponent, NavbarComponent } from "../../common";
+import { IContact } from '../../models';
+import { EmailService } from '../../services/email/email.service';
 
 
 @Component({
@@ -22,12 +22,14 @@ import { LanguagePickerComponent, NavbarComponent } from "../../common";
     ReactiveFormsModule,
     TranslateModule,
     LanguagePickerComponent
-],
+  ],
   standalone: true
 })
 
-export class ContactComponent implements OnDestroy {
+export class ContactComponent implements OnInit {
 
+
+  contact$: /* need something similar to Observable<JwtResponse> = EMPTY in order to use switchmap from rxjs*/;
   subscribe!: Subscription;
   showForm = true;
   successFailure!: SuccessFailureMessageComponent;
@@ -35,36 +37,42 @@ export class ContactComponent implements OnDestroy {
   valid: any;
   errors: any;
 
+
+
   constructor(
-    private http: HttpClient,
+    private fb: FormBuilder,
+    public contactForm: FormGroup,
+    private emailService: EmailService
   ) { }
 
-  sendEmail(contactForm: NgForm) {
-    const data = contactForm.value
-    return this.http.post(AppSettings.API_SERVER + '/send-email', data, { observe: 'response' });
-  }
+      ngOnInit(): void {
+      this.contactForm = this.fb.group({
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        email: ['', [Validators.required]],
+        subject: ['', [Validators.required]],
+        message: ['', [Validators.required]]
+      });
+    }
 
-  onSubmit(contactForm: NgForm) {
-    this.sendEmail(contactForm.value).subscribe(
-      res => {
-        if (res.status === 200) {
-          contactForm.reset();
-          this.showForm = false;
-          this.successFailure.onSubmitSuccess();
-        }
-      },
-      err => {
-        if (err.message) {
-          this.showForm = false;
-          this.successFailure.onSubmitFailure();
-        }
-      }
-    );
-  }
+  onSubmit = () => {
+    if (this.contactForm.valid) {
+      this.contact$ = of(this.contactForm.value).pipe(
 
-  ngOnDestroy() {
-    if (this.subscribe) {
-      this.subscribe.unsubscribe();
+        // Bjorn Schijff:
+
+        // switchMap will take the value coming in, map that value to another Observable and
+        // switches the subscription to the new Observable.
+        // must return an Observable
+
+        switchMap(contactForm => this.emailService.sendEmail(contactForm))
+      );
+
+
+
+
+
+
     }
   }
 }

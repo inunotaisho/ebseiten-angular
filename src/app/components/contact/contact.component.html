@@ -15,34 +15,59 @@
             <h2 class="card-title">{{'ContactComponent-TITLE'| translate}}</h2>
           </div>
           <div class="card-body">
-            <form #contactForm="ngForm" method="POST" action="/contact" (ngSubmit)="onSubmit(contactForm)"
-              id="inputform">
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
               <div class="form-group">
-                <input type="text" name="_gotcha" style="display: none">
-                <!--<label>Contact</label>
-                              <select class="form-control" required>{{user.email}}</select>-->
                 <fieldset>
                   <label class="margins-and-font" id="margin-compensate-1"
                     for="firstName">{{'ContactComponent-FIRSTNAME'|
                     translate}}</label>
-                  <input class="form-control" type="text" id="firstName" name="firstName" ngModel required
-                    #firstName="ngModel">
+                  <input class="form-control" [ngClass]="{'is-invalid': (contactForm.get('firstName')?.touched ||
+                              contactForm.get('firstName')?.dirty) &&
+                              !contactForm.get('firstName')?.valid }" formControlName="firstName" type="text">
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('firstName')?.errors?.['required']">
+                      Please enter valid Username
+                    </span>
+                  </span>
                   <label class="margins-and-font" for="lastName">{{'ContactComponent-LASTNAME'| translate}}</label>
-                  <input class="form-control" type="text" id="lastName" name="lastName" ngModel required
-                    #lastName="ngModel">
+                  <input class="form-control" [ngClass]="{'is-invalid': (contactForm.get('lastName')?.touched ||
+                              contactForm.get('lastName')?.dirty) &&
+                              !contactForm.get('lastName')?.valid }" formControlName="lastName" type="text">
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('lastname')?.errors?.['required']">
+                      Please enter valid Username
+                    </span>
+                  </span>
                   <label class="margins-and-font" for="email">{{'ContactComponent-EMAIL'| translate}}</label>
-                  <div class="form-group" [ngClass]="{ 'has-error': submitted && !valid }">
-                    <input class="form-control" id="email" type="email" name="email" ngModel required #email="ngModel">
-                    <p *ngIf="errors && errors.uniqueUsername">Email is not valid</p>
-                  </div>
+                  <input class="form-control" [ngClass]="{'is-invalid': (contactForm.get('email')?.touched ||
+                              contactForm.get('email')?.dirty) &&
+                              !contactForm.get('email')?.valid }" formControlName="email" type="text">
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('email')?.errors?.['required']">
+                      Please enter valid email address
+                    </span>
+                  </span>
                 </fieldset>
                 <fieldset>
                   <label class="margins-and-font" id="margin-compensate-2" for="subject">{{'ContactComponent-SUBJECT'|
                     translate}}</label>
-                  <input class="form-control" id="subject" type="text" name="subject" ngModel required
-                    #subject="ngModel">
+                  <input class="form-control" [ngClass]="{'is-invalid': (contactForm.get('subject')?.touched ||
+                              contactForm.get('subject')?.dirty) &&
+                              !contactForm.get('subject')?.valid }" formControlName="subject" type="text">
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('subject')?.errors?.['required']">
+                      Must enter a subject
+                    </span>
+                  </span>
                   <label class="margins-and-font" for="message">{{'ContactComponent-MESSAGE'| translate}}</label>
-                  <textarea class="form-control" id="message" name="message" rows="6" required ngModel></textarea>
+                  <textarea class="form-control" [ngClass]="{'is-invalid': (contactForm.get('message')?.touched ||
+                              contactForm.get('message')?.dirty) &&
+                              !contactForm.get('message')?.valid }" formControlName=" message" type="text" id="message" name="message" rows="6" required></textarea>
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('message')?.errors?.['required']">
+                      Please enter valid Username
+                    </span>
+                  </span>
                 </fieldset>
                 <div class="btn-padding">
                   <button class="btn btn-secondary head-ctm" id="submit" type="submit">Submit</button>
