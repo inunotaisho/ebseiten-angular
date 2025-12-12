@@ -50,15 +50,15 @@ export class NavbarComponent implements OnInit {
         active: 'active'
       },
       {
+        title: 'Navigate-Persona',
+        url: '/persona',
+        active: 'active',
+        visible: true
+      },
+      {
         title: 'Navigate-Blog',
         url: '/blog',
         active: 'active'
-      },
-      {
-        image: '/assets/images/myselfie.jpg',
-        url: '/about',
-        active: 'active',
-        visible: true
       },
       {
         title: 'Navigate-Login',

@@ -28,8 +28,8 @@ export const routes: Routes = [
     redirectTo:''
   },
   {
-    path:'about',
-    loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent)
+    path:'persona',
+    loadComponent: () => import('./components/persona/persona.component').then(m => m.PersonaComponent)
   },
   // {
   //   path: 'profile',
