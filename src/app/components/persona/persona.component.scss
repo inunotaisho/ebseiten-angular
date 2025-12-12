@@ -2,33 +2,47 @@ $color_1: #fff;
 $color_2: #2b3a42;
 $background-color_1: #f5f5f5;
 $background-color_2: #2b3a42;
+
+
+.persona-image {
+  display: flex;
+  justify-content: space-around;
+}
+
+.persona-item {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1149px) {
-	#personalimg {
-		height: 300px;
-		width: 299.33px;
-		border-radius: 8px;
+  #personalimg {
+    height: 300px;
+    width: 299.33px;
+    border-radius: 8px;
     margin-top: 7em;
     margin-bottom: 5em;
-	}
+  }
 
 }
+
 @media (min-width: 992px) and (max-width: 1148px) {
-	#personalimg {
-		height: 200px;
-		width: 199.5533px;
-		border-radius: 8px;
+  #personalimg {
+    height: 200px;
+    width: 199.5533px;
+    border-radius: 8px;
     margin-top: 6em;
     margin-bottom: 4em;
-	}
+  }
 
 
 }
+
 @media (max-width: 991px) {
-	#personalimg {
-		height: 200px;
-		width: 199.5533px;
-		border-radius: 8px;
+  #personalimg {
+    height: 200px;
+    width: 199.5533px;
+    border-radius: 8px;
     margin-top: 5em;
     margin-bottom: 3em;
-	}
+  }
 }
