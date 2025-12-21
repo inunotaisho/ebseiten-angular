@@ -15,8 +15,6 @@ import { SocialMediaItems } from '../../models';
   styleUrl: './success-failure-message.component.scss'
 })
 export class SuccessFailureMessageComponent implements OnInit {
-  showSuccessMsg = false;
-  showErrorMsg = false;
   socialMediaItems!: SocialMediaItems[];
 
   constructor() {

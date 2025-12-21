@@ -28,20 +28,12 @@ import { EmailService } from '../../services/email/email.service';
 
 export class ContactComponent implements OnInit {
 
-
-  contact$: /* need something similar to Observable<JwtResponse> = EMPTY in order to use switchmap from rxjs*/;
-  subscribe!: Subscription;
-  showForm = true;
-  successFailure!: SuccessFailureMessageComponent;
-  submitted: any;
-  valid: any;
-  errors: any;
-
+  contactForm!: FormGroup;
+  contact$: Observable<IContact> = EMPTY;
 
 
   constructor(
     private fb: FormBuilder,
-    public contactForm: FormGroup,
     private emailService: EmailService
   ) { }
 
