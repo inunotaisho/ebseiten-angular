@@ -10,7 +10,7 @@
     <div class="row">
       <div class="offset-lg-1 col-lg-10">
         <!-- Form when not complete -->
-        <div *ngIf="showForm" class="card panel-default">
+        <div  (ngSubmit)="onSubmit()" class="card panel-default">
           <div class="card-header head-ctm">
             <h2 class="card-title">{{'ContactComponent-TITLE'| translate}}</h2>
           </div>
