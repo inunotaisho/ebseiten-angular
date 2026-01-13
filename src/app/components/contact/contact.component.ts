@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  Component,
+  inject
+} from '@angular/core';
+
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
-import { EMPTY, Observable, of, Subscription, switchMap } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { SocialMediaContactComponent, SuccessFailureMessageComponent } from '../../banners';
 import { LanguagePickerComponent, NavbarComponent } from "../../common";
 import { IContact } from '../../models';
-import { EmailService } from '../../services/email/email.service';
+import { ContactStore } from './state/contact.store';
 
 
 @Component({
@@ -26,46 +29,68 @@ import { EmailService } from '../../services/email/email.service';
   standalone: true
 })
 
-export class ContactComponent implements OnInit {
+export class ContactComponent {
+  private readonly contactStore = inject(ContactStore);
+  private readonly fb = inject(FormBuilder);
 
-  contactForm!: FormGroup;
-  contact$: Observable<IContact> = EMPTY;
 
+  // Expose store signals to template
+  readonly isSubmitting = this.contactStore.isSubmitting;
+  readonly isSuccess = this.contactStore.isSuccess;
+  readonly serverErrors = this.contactStore.serverErrors;
+  readonly hasServerErrors = this.contactStore.hasServerErrors;
+  readonly generalError = this.contactStore.generalError;
+  readonly isDisabled = this.contactStore.isDisabled;
 
   constructor(
-    private fb: FormBuilder,
-    private emailService: EmailService
   ) { }
 
-      ngOnInit(): void {
-      this.contactForm = this.fb.group({
-        firstName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
-        email: ['', [Validators.required]],
-        subject: ['', [Validators.required]],
-        message: ['', [Validators.required]]
-      });
+
+  readonly contactForm = this.fb.group({
+    firstName: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    subject: ['', [Validators.required]],
+    message: ['', [Validators.required]],
+    // Honeypot field - should remain empty
+    _gotcha: [''],
+  });
+
+
+  onSubmit(): void {
+    const rawData = this.contactForm.getRawValue();
+
+    // Honeypot check: If _gotcha is filled, silent return (bot detected)
+    if ((rawData._gotcha?.length ?? 0) > 0) {
+      return;
     }
 
-  onSubmit = () => {
-    if (this.contactForm.valid) {
-      this.contact$ = of(this.contactForm.value).pipe(
-
-        // Bjorn Schijff:
-
-        // switchMap will take the value coming in, map that value to another Observable and
-        // switches the subscription to the new Observable.
-        // must return an Observable
-
-        switchMap(contactForm => this.emailService.sendEmail(contactForm))
-      );
-
-
-
-
-
-
+    if (this.contactForm.invalid || this.isDisabled()) {
+      return;
     }
+
+    this.contactStore.clearErrors();
+
+    const data = this.contactForm.getRawValue();
+    const formData: IContact = {
+      firstName: data.firstName ?? '',
+      lastName: data.lastName ?? '',
+      email: data.email ?? '',
+      subject: data.subject ?? '',
+      message: data.message ?? '',
+      _gotcha: data._gotcha ?? '',
+    };
+
+    this.contactStore.submitForm(formData);
+  }
+
+  /**
+ * Get server-side error for a specific field.
+ */
+  getServerError(field: string): string | null {
+    const errors = this.serverErrors();
+    const error = errors.find((e) => e.field === field);
+    return error?.message ?? null;
   }
 }
 

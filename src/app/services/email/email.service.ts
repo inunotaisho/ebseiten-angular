@@ -1,56 +1,80 @@
-
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, NgForm } from '@angular/forms';
+import { Injectable, inject } from '@angular/core';
+import { Observable, map, tap, throwError } from 'rxjs';
+
+import type { IContact } from '../../models';
 import { AppSettings } from '../../common/config';
-import { catchError, EMPTY, take, tap } from 'rxjs';
-import { getSingleError } from '../../common/error';
-import { IContact } from '../../models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmailService {
+  private readonly http = inject(HttpClient);
+  private readonly STORAGE_KEY = 'eb_contact_last_submission';
+  private readonly COOLDOWN_MS = 30000;
 
-  public showForm!: boolean;
-  public showSuccessMsg!: boolean;
-  public showErrorMsg!: boolean;
-
-  public attemptingToContact!: boolean;
-
-
-  constructor(
-    private http: HttpClient,
-    public contactForm: FormGroup,
-  ) { }
-
-
-    contactHelper(req: object) : void {
-        this.showForm = true;
+  /**
+   * Send contact message to Formspree.
+   *
+   * @param formData The form data to send
+   * @returns Observable that completes on success
+   * @throws HttpErrorResponse with Formspree validation errors on 422
+   * @throws Error if rate limited or endpoint missing
+   */
+  sendContactMessage(formData: IContact): Observable<void> {
+    if (this.isRateLimited()) {
+      return throwError(() => new Error('Please wait 30 seconds before submitting again.'));
     }
 
 
 
-  sendEmail(contactForm: IContact) {
-    if (this.attemptingToContact) {
-      return EMPTY
-    }
-    this.attemptingToContact = true;
-    const data = contactForm;
-    return this.http.post(AppSettings.API_SERVER + '/send-email', data, { observe: 'response' }).pipe(
-      take(1),
-      tap(() => {
-        this.showSuccessMsg = true;
+    // Let HTTP errors propagate naturally for the store to handle
+    return this.http
+      .post<unknown>(AppSettings.API_SERVER + '/send-email', formData, {
+        headers: { Accept: 'application/json' },
       })
-    ),
-      catchError((error, caught) => {
+      .pipe(
+        tap(() => {
+          this.recordSubmission();
+        }),
+        // Discard response body, return void observable
+        map((): void => undefined),
+      );
+  }
 
-        this.showErrorMsg = true;
+  /**
+   * Check if the user is currently rate limited.
+   */
+  isRateLimited(): boolean {
+    const lastSubmission = localStorage.getItem(this.STORAGE_KEY);
+    if (lastSubmission === null) return false;
 
-        getSingleError(error);
+    const timePassed = Date.now() - parseInt(lastSubmission, 10);
+    return timePassed < this.COOLDOWN_MS;
+  }
 
-        return EMPTY
-      })
+  /**
+   * Get the remaining cooldown time in seconds.
+   */
+  getRemainingCooldown(): number {
+    const lastSubmission = localStorage.getItem(this.STORAGE_KEY);
+    if (lastSubmission === null) return 0;
+
+    const timePassed = Date.now() - parseInt(lastSubmission, 10);
+    if (timePassed >= this.COOLDOWN_MS) return 0;
+
+    return Math.ceil((this.COOLDOWN_MS - timePassed) / 1000);
+  }
+
+  /**
+   * Start the cooldown timer manually.
+   * Useful for UI testing or forcing a cooldown state.
+   */
+  startCooldown(): void {
+    this.recordSubmission();
+  }
+
+  private recordSubmission(): void {
+    localStorage.setItem(this.STORAGE_KEY, Date.now().toString());
   }
 }
-
