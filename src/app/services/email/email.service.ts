@@ -30,7 +30,7 @@ export class EmailService {
 
     // Let HTTP errors propagate naturally for the store to handle
     return this.http
-      .post<unknown>(AppSettings.API_SERVER + '/send-email', formData, {
+      .post<unknown>(AppSettings.API_SERVER + 'myEmailFunction', formData, {
         headers: { Accept: 'application/json' },
       })
       .pipe(
