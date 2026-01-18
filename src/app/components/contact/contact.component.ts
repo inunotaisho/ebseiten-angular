@@ -1,5 +1,7 @@
+import { EmailService } from './../../services/email/email.service';
 import {
   Component,
+  effect,
   inject
 } from '@angular/core';
 
@@ -13,9 +15,8 @@ import { ContactStore } from './state/contact.store';
 
 
 @Component({
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
-  imports: [
+  standalone: true,
+    imports: [
     NavbarComponent,
     SocialMediaContactComponent,
     SuccessFailureMessageComponent,
@@ -26,24 +27,33 @@ import { ContactStore } from './state/contact.store';
     TranslateModule,
     LanguagePickerComponent
   ],
-  standalone: true
+  providers:[
+    ContactStore,
+    SuccessFailureMessageComponent
+  ],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss'],
+
 })
 
 export class ContactComponent {
+  private readonly emailService = inject(EmailService);
   private readonly contactStore = inject(ContactStore);
+  private readonly sf = inject(SuccessFailureMessageComponent);
   private readonly fb = inject(FormBuilder);
+  private cooldownTimer: ReturnType<typeof setInterval> | null = null;
 
 
   // Expose store signals to template
   readonly isSubmitting = this.contactStore.isSubmitting;
   readonly isSuccess = this.contactStore.isSuccess;
+  readonly isFailure = this.contactStore.isFailure;
+  readonly isFailing = this.contactStore.isFailing;
   readonly serverErrors = this.contactStore.serverErrors;
   readonly hasServerErrors = this.contactStore.hasServerErrors;
   readonly generalError = this.contactStore.generalError;
+  readonly cooldownSeconds = this.contactStore.cooldownSeconds;
   readonly isDisabled = this.contactStore.isDisabled;
-
-  constructor(
-  ) { }
 
 
   readonly contactForm = this.fb.group({
@@ -56,6 +66,52 @@ export class ContactComponent {
     _gotcha: [''],
   });
 
+
+  // Form state management - disable when submitting or in cooldown
+  private readonly _formStateEffect = effect(() => {
+    const shouldDisable = this.isDisabled();
+    if (shouldDisable) {
+      this.contactForm.disable({ emitEvent: false });
+    } else {
+      this.contactForm.enable({ emitEvent: false });
+    }
+  });
+
+  // Show success toast when submission succeeds
+  private readonly _successEffect = effect(() => {
+    if (this.isSuccess()) {
+      this.sf.onSubmitSuccess();
+        this.emailService.startCooldown();
+      this.contactForm.reset();
+    }
+  });
+
+  private readonly _failureEffect = effect(() => {
+    if(this.isFailure()){
+      this.sf.onSubmitFailure();
+      this.emailService.startCooldown();
+      this.contactForm.reset();
+    }
+  })
+
+  constructor(
+  ) {
+    // Update cooldown every second
+    this.cooldownTimer = setInterval(() => {
+      this.updateCooldown();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.cooldownTimer !== null) {
+      clearInterval(this.cooldownTimer);
+    }
+  }
+
+  private updateCooldown(): void {
+    const remaining = this.emailService.getRemainingCooldown();
+    this.contactStore.setCooldown(remaining);
+  }
 
   onSubmit(): void {
     const rawData = this.contactForm.getRawValue();
@@ -91,6 +147,10 @@ export class ContactComponent {
     const errors = this.serverErrors();
     const error = errors.find((e) => e.field === field);
     return error?.message ?? null;
+  }
+
+  isRateLimited(): boolean {
+    return this.emailService.isRateLimited();
   }
 }
 
