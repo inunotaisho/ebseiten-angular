@@ -15,6 +15,8 @@ import { EmailService } from '../../../services/email/email.service';
 type ContactState = {
   isSubmitting: boolean;
   isSuccess: boolean;
+  isFailing: boolean;
+  isFailure: boolean;
   serverErrors: LambdaFieldError[];
   generalError: string | null;
   cooldownSeconds: number;
@@ -23,6 +25,8 @@ type ContactState = {
 const initialState: ContactState = {
   isSubmitting: false,
   isSuccess: false,
+  isFailing: false,
+  isFailure: false,
   serverErrors: [],
   generalError: null,
   cooldownSeconds: 0,
@@ -104,6 +108,8 @@ export const ContactStore = signalStore(
                   patchState(store, {
                     isSubmitting: false,
                     isSuccess: false,
+                    isFailure: false,
+                    isFailing:true,
                     serverErrors: body?.errors ?? [],
                     generalError: 'Validation errors',
                   });
@@ -113,6 +119,7 @@ export const ContactStore = signalStore(
                   patchState(store, {
                     isSubmitting: false,
                     isSuccess: false,
+                    isFailure: true,
                     serverErrors: [],
                     generalError: message,
                   });
