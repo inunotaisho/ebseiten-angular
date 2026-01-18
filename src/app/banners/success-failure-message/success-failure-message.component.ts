@@ -16,12 +16,14 @@ import { SocialMediaItems } from '../../models';
 })
 export class SuccessFailureMessageComponent implements OnInit {
   socialMediaItems!: SocialMediaItems[];
+  showSuccessMsg!: boolean;
+  showErrorMsg!: boolean;
 
   constructor() {
 
   }
 
-    ngOnInit() {
+  ngOnInit() {
 
     this.socialMediaItems = [
       {
@@ -57,7 +59,7 @@ export class SuccessFailureMessageComponent implements OnInit {
     ];
   }
 
-    onSubmitSuccess() {
+  onSubmitSuccess() {
     this.showSuccessMsg = true;
   }
 
