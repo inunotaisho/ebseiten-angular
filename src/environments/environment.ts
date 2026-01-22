@@ -2,9 +2,24 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { AppEnvironment } from "./environment.type";
+
+export const environment: AppEnvironment = {
+  appName: 'Ethan Burrow Fairweather portfolio',
   production: false,
-  api_server: `https://ncl2xctaf1.execute-api.us-east-2.amazonaws.com/dev`
+  apiUrl: `https://ncl2xctaf1.execute-api.us-east-2.amazonaws.com/dev`,
+  features: {
+    mockAuth: true,
+  },
+  analytics: {
+    enabled: true,
+    provider: 'console',
+  },
+  version: '0.0.1',
+  github: {
+    username: 'YOUR_GITHUB_USERNAME',
+    pat: 'YOUR_GITHUB_PAT',
+  }
 };
 
 /*
