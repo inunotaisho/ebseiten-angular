@@ -12,6 +12,7 @@ import { SocialMediaContactComponent, SuccessFailureMessageComponent } from '../
 import { LanguagePickerComponent, NavbarComponent } from "../../common";
 import { IContact } from '../../models';
 import { ContactStore } from './state/contact.store';
+import { EmailoutcomeService } from '../../services/contact-outcome/emailoutcome.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ import { ContactStore } from './state/contact.store';
 export class ContactComponent {
   private readonly emailService = inject(EmailService);
   private readonly contactStore = inject(ContactStore);
+  private readonly outcome =inject(EmailoutcomeService);
   private readonly sf = inject(SuccessFailureMessageComponent);
   private readonly fb = inject(FormBuilder);
   private cooldownTimer: ReturnType<typeof setInterval> | null = null;
@@ -80,19 +82,14 @@ export class ContactComponent {
   // Show success toast when submission succeeds
   private readonly _successEffect = effect(() => {
     if (this.isSuccess()) {
-      this.sf.onSubmitSuccess();
+      this.outcome.show(this.sf.onSubmitSuccess());
         this.emailService.startCooldown();
       this.contactForm.reset();
+    } else {
+      this.outcome.show(this.sf.onSubmitFailure());
     }
   });
 
-  private readonly _failureEffect = effect(() => {
-    if(this.isFailure()){
-      this.sf.onSubmitFailure();
-      this.emailService.startCooldown();
-      this.contactForm.reset();
-    }
-  })
 
   constructor(
   ) {
