@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { SocialMediaItems } from '../../models';
 
@@ -14,10 +14,11 @@ import { SocialMediaItems } from '../../models';
   templateUrl: './success-failure-message.component.html',
   styleUrl: './success-failure-message.component.scss'
 })
-export class SuccessFailureMessageComponent implements OnInit {
+export class SuccessFailureMessageComponent implements OnInit, OnDestroy {
   socialMediaItems!: SocialMediaItems[];
-  showSuccessMsg!: boolean;
-  showErrorMsg!: boolean;
+  showSuccessMsg = false;
+  showErrorMsg = false;
+  private clearTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
 
@@ -61,10 +62,33 @@ export class SuccessFailureMessageComponent implements OnInit {
 
   onSubmitSuccess() {
     this.showSuccessMsg = true;
+    this.showErrorMsg = false;
+    this.startClearTimer();
   }
 
   onSubmitFailure() {
     this.showErrorMsg = true;
+    this.showSuccessMsg = false;
+    this.startClearTimer();
   }
 
+  private startClearTimer(): void {
+    // Clear any existing timer
+    if (this.clearTimer) {
+      clearTimeout(this.clearTimer);
+    }
+    
+    // Set timer to clear messages after 5 seconds
+    this.clearTimer = setTimeout(() => {
+      this.showSuccessMsg = false;
+      this.showErrorMsg = false;
+      this.clearTimer = null;
+    }, 5000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.clearTimer) {
+      clearTimeout(this.clearTimer);
+    }
+  }
 }

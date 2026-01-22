@@ -2,7 +2,8 @@ import { EmailService } from './../../services/email/email.service';
 import {
   Component,
   effect,
-  inject
+  inject,
+  ViewChild
 } from '@angular/core';
 
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -28,10 +29,7 @@ import { EmailoutcomeService } from '../../services/contact-outcome/emailoutcome
     TranslateModule,
     LanguagePickerComponent
   ],
-  providers:[
-    ContactStore,
-    SuccessFailureMessageComponent
-  ],
+  providers: [ContactStore],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 
@@ -40,9 +38,11 @@ import { EmailoutcomeService } from '../../services/contact-outcome/emailoutcome
 export class ContactComponent {
   private readonly emailService = inject(EmailService);
   private readonly contactStore = inject(ContactStore);
-  private readonly outcome =inject(EmailoutcomeService);
-  private readonly sf = inject(SuccessFailureMessageComponent);
+  private readonly outcome = inject(EmailoutcomeService);
   private readonly fb = inject(FormBuilder);
+
+  // Get the rendered instance of SuccessFailureMessageComponent from the template
+  @ViewChild(SuccessFailureMessageComponent) successFailureMessage!: SuccessFailureMessageComponent;
   private cooldownTimer: ReturnType<typeof setInterval> | null = null;
 
 
@@ -79,14 +79,20 @@ export class ContactComponent {
     }
   });
 
-  // Show success toast when submission succeeds
+  // Show success/failure message when submission settles
   private readonly _successEffect = effect(() => {
     if (this.isSuccess()) {
-      this.outcome.show(this.sf.onSubmitSuccess());
-        this.emailService.startCooldown();
+      if (this.successFailureMessage) {
+        this.successFailureMessage.onSubmitSuccess();
+      }
+      this.outcome.show(true); // Record successful submission
+      this.emailService.startCooldown();
       this.contactForm.reset();
-    } else {
-      this.outcome.show(this.sf.onSubmitFailure());
+    } else if (this.isFailure() || this.isFailing()) {
+      if (this.successFailureMessage) {
+        this.successFailureMessage.onSubmitFailure();
+      }
+      this.outcome.show(false); // Record failed submission
     }
   });
 
@@ -119,6 +125,7 @@ export class ContactComponent {
     }
 
     if (this.contactForm.invalid || this.isDisabled()) {
+      this.contactForm.markAllAsTouched(); // Show validation errors immediately
       return;
     }
 
