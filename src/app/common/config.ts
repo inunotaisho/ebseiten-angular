@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment';
 
 export class AppSettings {
   public static get API_SERVER(): string {
-    return environment.api_server;
+    return environment.apiUrl;
   }
 
   public static get BASE_URL(): any {
