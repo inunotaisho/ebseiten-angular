@@ -13,7 +13,7 @@ export class EmailoutcomeService {
   was successfully sent or if the message failed to send
 
   */
-  show():{
+  show(){
 
   }
 
