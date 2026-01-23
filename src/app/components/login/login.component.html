@@ -1,54 +1,54 @@
-<app-navbar></app-navbar>
+<app-navbar />
 <div class="login-margin-top row">
   <div class="offset-lg-3 col-lg-6">
-      <div class="card panel-default">
-        <div class="card-header head-ctm">
-          <h2 class="card-title">{{'LoginComponent-TITLE'| translate}}</h2>
-        </div>
-        <ng-template *ngIf="user$ | async; else error"></ng-template>
-        <ng-template #error></ng-template>
-        <div class="card-body">
-          <form (ngSubmit)="loginUser()" [formGroup]="userForm">
-            <div>
-              <!-- <span *ngIf="userForm.get('password').errors?.maxlength">
+    <div class="card panel-default">
+      <div class="card-header head-ctm">
+        <h2 class="card-title">{{'LoginComponent-TITLE'| translate}}</h2>
+      </div>
+      <ng-template *ngIf="user$ | async; else error"></ng-template>
+      <ng-template #error></ng-template>
+      <div class="card-body">
+        <form (ngSubmit)="loginUser()" [formGroup]="userForm">
+          <div>
+            <!-- <span *ngIf="userForm.get('password').errors?.maxlength">
                   Username/password is not valid.
                 </span> -->
+          </div>
+          <div class="form-group">
+            <div class="login-body">
+              <input class="form-control" placeholder="Username" [ngClass]="{'is-invalid': (userForm.get('username')?.touched ||
+                              userForm.get('username')?.dirty) &&
+                              !userForm.get('username')?.valid }" formControlName="username" type="text">
+              <span class="invalid-feedback">
+                <span *ngIf="userForm.get('username')?.errors?.['required']">
+                  Please enter valid Username
+                </span>
+              </span>
             </div>
             <div class="form-group">
               <div class="login-body">
-                <input class="form-control" placeholder="Username" [ngClass]="{'is-invalid': (userForm.get('username')?.touched ||
-                              userForm.get('username')?.dirty) &&
-                              !userForm.get('username')?.valid }" formControlName="username" type="text">
+                <input class="form-control" placeholder="Password" [ngClass]="{'is-invalid': (userForm.get('password')?.touched ||
+                              userForm.get('password')?.dirty) &&
+                              !userForm.get('password')?.valid }" formControlName="password" type="password">
                 <span class="invalid-feedback">
-                  <span *ngIf="userForm.get('username')?.errors?.['required']">
-                    Please enter valid Username
+                  <span *ngIf="userForm.get('password')?.errors?.['required']">
+                    Please enter password
                   </span>
                 </span>
               </div>
-              <div class="form-group">
-                <div class="login-body">
-                  <input class="form-control" placeholder="Password" [ngClass]="{'is-invalid': (userForm.get('password')?.touched ||
-                              userForm.get('password')?.dirty) &&
-                              !userForm.get('password')?.valid }" formControlName="password" type="password">
-                  <span class="invalid-feedback">
-                    <span *ngIf="userForm.get('password')?.errors?.['required']">
-                      Please enter password
-                    </span>
-                  </span>
-                </div>
-              </div>
-              <div class="login-button-margin">
-                <button class="btn btn-secondary head-ctm" id="login" type="submit">{{'LoginComponent-BUTTON'|
-                  translate}}</button>
-              </div>
             </div>
-          </form>
-          <div>
-            <p>Don't have an account? <a routerLink="/reg">Sign Up</a></p>
+            <div class="login-button-margin">
+              <button class="btn btn-secondary head-ctm" id="login" type="submit">{{'LoginComponent-BUTTON'|
+                translate}}</button>
+            </div>
           </div>
+        </form>
+        <div>
+          <p>Don't have an account? <a routerLink="/reg">Sign Up</a></p>
         </div>
       </div>
+    </div>
 
   </div>
 </div>
-<app-language-picker></app-language-picker>
+<app-language-picker />

@@ -1,45 +1,46 @@
-  <app-navbar></app-navbar>
-  <app-social></app-social>
-  <div class="mindset">
-    <div class="mindsetpos">
-      <div class="mindsetimg mindsetimg1">
-      </div>
-      <div class="mindsetimg mindsetimg2">
+<app-navbar />
+<app-social />
+<div class="mindset">
+  <div class="mindsetpos">
+    <div class="mindsetimg mindsetimg1">
+    </div>
+    <div class="mindsetimg mindsetimg2">
+    </div>
+  </div>
+  <div class="mindsetpos">
+    <div class="himgcont">
+      <div class="mindsetimg mindsetimg3">
       </div>
     </div>
-    <div class="mindsetpos">
-      <div class="himgcont">
-        <div class="mindsetimg mindsetimg3">
-        </div>
-      </div>
-      <div class="himgcont">
-        <div class="mindsetimg mindsetimg4">
-        </div>
+    <div class="himgcont">
+      <div class="mindsetimg mindsetimg4">
       </div>
     </div>
   </div>
-  <div id="home">
-    <div>
-      <div class="mottopos">
-        <p class="motto" title="Do you have someone to protect?">{{'HomeComponent-MOTIVATION' | translate}}</p>
-      </div>
-      <div class="personalimgpos">
-        <img class="personalimg" routerLink="/about" title="Do you have someone to protect?" src="../../../assets/images/myselfie.jpg" />
-      </div>
-      <div class="perscont">
-        <div class="persinfo">
-          <p routerLink="/about" >{{'HomeComponent-INTRO'| translate}}</p>
-          <ul routerLink="/about" class="list-group list-group-flush">
-            <li class="list-group-item">{{'HomeComponent-ENTREPRENEUR'| translate}}</li>
-            <li class="list-group-item">{{'HomeComponent-DEVELOPER'| translate}}</li>
-            <li class="list-group-item">{{'HomeComponent-BUSINESS'| translate}}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="perscont">
-        <a href="https://www.codementor.io/@inunotaisho?refer=badge"><img
-            src="https://www.codementor.io/m-badges/inunotaisho/find-me-on-cm-b.svg" alt="Codementor badge"></a>
+</div>
+<div id="home">
+  <div>
+    <div class="mottopos">
+      <p class="motto" title="Do you have someone to protect?">{{'HomeComponent-MOTIVATION' | translate}}</p>
+    </div>
+    <div class="personalimgpos">
+      <img class="personalimg" routerLink="/about" title="Do you have someone to protect?"
+        src="../../../assets/images/myselfie.jpg" />
+    </div>
+    <div class="perscont">
+      <div class="persinfo">
+        <p routerLink="/about">{{'HomeComponent-INTRO'| translate}}</p>
+        <ul routerLink="/about" class="list-group list-group-flush">
+          <li class="list-group-item">{{'HomeComponent-ENTREPRENEUR'| translate}}</li>
+          <li class="list-group-item">{{'HomeComponent-DEVELOPER'| translate}}</li>
+          <li class="list-group-item">{{'HomeComponent-BUSINESS'| translate}}</li>
+        </ul>
       </div>
     </div>
+    <div class="perscont">
+      <a href="https://www.codementor.io/@inunotaisho?refer=badge"><img
+          src="https://www.codementor.io/m-badges/inunotaisho/find-me-on-cm-b.svg" alt="Codementor badge"></a>
+    </div>
   </div>
-  <app-language-picker></app-language-picker>
+</div>
+<app-language-picker />

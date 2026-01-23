@@ -1,8 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar />
 <div class=" container">
   <div class="row">
-    <app-social-media-contact>
-    </app-social-media-contact>
+    <app-social-media-contact />
   </div>
 </div>
 <div class="contact-margin">
@@ -10,8 +9,7 @@
     <div class="row">
       <div class="offset-lg-1 col-lg-10">
         <!-- Form when not complete end -->
-        <app-success-failure-message>
-        </app-success-failure-message>
+        <app-success-failure-message />
         <!-- Form when not complete -->
         <div class="card panel-default">
           <div class="card-header head-ctm">
@@ -73,20 +71,21 @@
                     </span>
                   </span>
                 </fieldset>
-                  <div class="visually-hidden">
-                    <input type="text" formControlName="_gotcha" tabindex="-1" autocomplete="off" />
-                  </div>
+                <div class="visually-hidden">
+                  <input type="text" formControlName="_gotcha" tabindex="-1" autocomplete="off" />
+                </div>
                 <div class="btn-padding">
-                  <button class="btn btn-secondary head-ctm" id="submit" type="submit" [disabled]="isDisabled()">Submit</button>
+                  <button class="btn btn-secondary head-ctm" id="submit" type="submit"
+                    [disabled]="isDisabled()">Submit</button>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
 </div>
-<app-language-picker></app-language-picker>
+<app-language-picker />
 <!-- <return-button class="hidden-btn"></return-button> -->
