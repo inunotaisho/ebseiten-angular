@@ -9,8 +9,11 @@
   <div class="container">
     <div class="row">
       <div class="offset-lg-1 col-lg-10">
+        <!-- Form when not complete end -->
+        <app-success-failure-message>
+        </app-success-failure-message>
         <!-- Form when not complete -->
-        <div  (ngSubmit)="onSubmit()" class="card panel-default">
+        <div class="card panel-default">
           <div class="card-header head-ctm">
             <h2 class="card-title">{{'ContactComponent-TITLE'| translate}}</h2>
           </div>
@@ -34,7 +37,7 @@
                               contactForm.get('lastName')?.dirty) &&
                               !contactForm.get('lastName')?.valid }" formControlName="lastName" type="text">
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('lastname')?.errors?.['required']">
+                    <span *ngIf="contactForm.get('lastName')?.errors?.['required']">
                       Please enter valid Username
                     </span>
                   </span>
@@ -62,7 +65,7 @@
                   <label class="margins-and-font" for="message">{{'ContactComponent-MESSAGE'| translate}}</label>
                   <textarea class="form-control" [ngClass]="{'is-invalid': (contactForm.get('message')?.touched ||
                               contactForm.get('message')?.dirty) &&
-                              !contactForm.get('message')?.valid }" formControlName=" message" type="text" id="message"
+                              !contactForm.get('message')?.valid }" formControlName="message" type="text" id="message"
                     name="message" rows="6" required></textarea>
                   <span class="invalid-feedback">
                     <span *ngIf="contactForm.get('message')?.errors?.['required']">
@@ -74,15 +77,13 @@
                     <input type="text" formControlName="_gotcha" tabindex="-1" autocomplete="off" />
                   </div>
                 <div class="btn-padding">
-                  <button class="btn btn-secondary head-ctm" id="submit" type="submit">Submit</button>
+                  <button class="btn btn-secondary head-ctm" id="submit" type="submit" [disabled]="isDisabled()">Submit</button>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        <!-- Form when not complete end -->
-        <app-success-failure-message>
-        </app-success-failure-message>
+        
       </div>
     </div>
   </div>

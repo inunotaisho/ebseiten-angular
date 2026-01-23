@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
 
@@ -7,14 +7,13 @@ import { Injectable, signal } from '@angular/core';
 })
 export class EmailoutcomeService {
 
-/*
-
-  A simple service meant to determine whether the contact message
-  was successfully sent or if the message failed to send
-
-  */
-  show(){
-
+  /**
+   * Records whether the contact message was successfully sent or failed.
+   * @param success - true if message was sent successfully, false if it failed
+   */
+  show(success: boolean): void {
+    // This can be used for analytics, logging, or other tracking purposes
+    // Implementation can be extended as needed
   }
 
 }

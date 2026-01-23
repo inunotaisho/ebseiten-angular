@@ -1,7 +1,128 @@
+// Message container styles
+.message-container {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-content {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+// Success message styles
+.success-message-container {
+  .message-content {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 2px solid #28a745;
+    border-left: 5px solid #28a745;
+  }
+
+  .success-title {
+    color: #155724;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #28a745;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+    }
+  }
+}
+
+// Error message styles
+.error-message-container {
+  .message-content {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 2px solid #dc3545;
+    border-left: 5px solid #dc3545;
+  }
+
+  .error-title {
+    color: #721c24;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::before {
+      content: '✕';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #dc3545;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+    }
+  }
+
+  .error-description {
+    color: #721c24;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    font-weight: 500;
+  }
+}
+
+// Common message styles
+.message-title {
+  margin-bottom: 1rem;
+}
+
+.message-subtitle {
+  color: #495057;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.social-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// Social media list styles
 .social-list {
   display: flex;
   align-items: center;
-  gap: 10px; /* space between items */
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -16,17 +137,19 @@
 .social-link {
   display: flex;
   align-items: center;
-  background: #f5f6f8; /* light grey background */
-  border-radius: 999px; /* full pill shape */
-  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  padding: 8px 16px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .social-link:hover {
-  background: #e8e9eb;
+  background: rgba(255, 255, 255, 1);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .social-icon {
@@ -54,7 +177,32 @@
 }
 
 .social-link:hover .social-text {
-  color: #007bff; /* make text blue on hover */
+  color: #007bff;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .message-content {
+    padding: 1.5rem;
+  }
+
+  .success-title,
+  .error-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+
+    &::before {
+      width: 35px;
+      height: 35px;
+      font-size: 1.2rem;
+    }
+  }
+
+  .message-subtitle {
+    font-size: 1.1rem;
+  }
 }
 
 

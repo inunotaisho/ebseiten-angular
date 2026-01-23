@@ -1,43 +1,45 @@
-<!-- Form when sucesully sent -->
-<div *ngIf="showSuccessMsg">
+<!-- Form when successfully sent -->
+<div *ngIf="showSuccessMsg" class="message-container success-message-container">
   <div class="offset-md-3 col-md-8">
-    <h1>Message has sucessfully been sent</h1>
-    <h2> Check me out on social media too!!!</h2>
-    <div>
-      <ul class="social-list">
-        <li *ngFor="let p of socialMediaItems" class="social-item">
-          <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
-            <div class="social-icon">
-              <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
-            </div>
-            <span class="social-text">{{ p.socialMediaName | translate }}</span>
-          </a>
-        </li>
-      </ul>
+    <div class="message-content">
+      <h1 class="message-title success-title">Message has successfully been sent</h1>
+      <h2 class="message-subtitle">Check me out on social media too!!!</h2>
+      <div class="social-section">
+        <ul class="social-list">
+          <li *ngFor="let p of socialMediaItems" class="social-item">
+            <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
+              <div class="social-icon">
+                <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+              </div>
+              <span class="social-text">{{ p.socialMediaName | translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-<!-- Form when sucesully sent end-->
+<!-- Form when successfully sent end-->
 <!-- Error when sending form -->
-<div *ngIf="showErrorMsg">
+<div *ngIf="showErrorMsg" class="message-container error-message-container">
   <div class="offset-md-3 col-md-7">
-    <h1>Oops!! Something is going wrong!!</h1>
-  </div>
-  <div class="offset-md-3 col-md-7">
-    <h1>Please refresh page and try again</h1>
-  </div>
-  <h2>Or check me out on social media!</h2>
-  <div>
-    <ul class="social-list">
-      <li *ngFor="let p of socialMediaItems" class="social-item">
-        <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
-          <div class="social-icon">
-            <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
-          </div>
-          <span class="social-text">{{ p.socialMediaName | translate }}</span>
-        </a>
-      </li>
-    </ul>
+    <div class="message-content">
+      <h1 class="message-title error-title">Oops!! Something went wrong!!</h1>
+      <p class="error-description">Please refresh the page and try again</p>
+      <h2 class="message-subtitle">Or check me out on social media!</h2>
+      <div class="social-section">
+        <ul class="social-list">
+          <li *ngFor="let p of socialMediaItems" class="social-item">
+            <a [href]="p.socialUrl | translate" target="_blank" rel="nofollow noopener noreferrer" class="social-link">
+              <div class="social-icon">
+                <img [src]="p.socialImgUrl | translate" [alt]="p.alt | translate" />
+              </div>
+              <span class="social-text">{{ p.socialMediaName | translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Error when sending form -->
