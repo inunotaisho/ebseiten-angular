@@ -86,6 +86,8 @@ export const ContactStore = signalStore(
           patchState(store, {
             isSubmitting: true,
             isSuccess: false,
+            isFailure: false,
+            isFailing: false,
             serverErrors: [],
             generalError: null,
           });

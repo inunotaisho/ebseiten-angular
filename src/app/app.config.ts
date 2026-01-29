@@ -16,7 +16,6 @@ import { ReusableImgComponent } from './common';
 import { WorkTabsComponent } from './banners';
 import { PoliticalWorkComponent } from './components/portfolio/political-work/political-work.component';
 
-
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
   new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
