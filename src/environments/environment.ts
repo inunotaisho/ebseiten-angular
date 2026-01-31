@@ -7,7 +7,7 @@ import { AppEnvironment } from "./environment.type";
 export const environment: AppEnvironment = {
   appName: 'Ethan Burrow Fairweather portfolio',
   production: false,
-  apiUrl: `https://ncl2xctaf1.execute-api.us-east-2.amazonaws.com/dev`,
+  apiUrl: `http://inunotaishoapi-dev.us-west-2.elasticbeanstalk.com`,
   features: {
     mockAuth: true,
   },
