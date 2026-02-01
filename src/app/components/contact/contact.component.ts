@@ -45,6 +45,10 @@ export class ContactComponent {
   @ViewChild(SuccessFailureMessageComponent) successFailureMessage!: SuccessFailureMessageComponent;
   private cooldownTimer: ReturnType<typeof setInterval> | null = null;
 
+  // When false, show success/failure message instead of form. Form returns when cooldown ends (success) or after 5s (failure).
+  showForm = true;
+  // Track if we're showing success (so we wait for cooldown to end before restoring form)
+  private lastWasSuccess = false;
 
   // Expose store signals to template
   readonly isSubmitting = this.contactStore.isSubmitting;
@@ -79,20 +83,38 @@ export class ContactComponent {
     }
   });
 
-  // Show success/failure message when submission settles
+  // Show success/failure message when submission settles; message replaces form
   private readonly _successEffect = effect(() => {
     if (this.isSuccess()) {
-      if (this.successFailureMessage) {
-        this.successFailureMessage.onSubmitSuccess();
-      }
-      this.outcome.show(true); // Record successful submission
+      this.showForm = false;
+      this.lastWasSuccess = true;
+      this.outcome.show(true);
       this.emailService.startCooldown();
       this.contactForm.reset();
+      // Defer so the message component exists after view updates
+      setTimeout(() => {
+        if (this.successFailureMessage) {
+          this.successFailureMessage.onSubmitSuccess();
+        }
+      }, 0);
     } else if (this.isFailure() || this.isFailing()) {
-      if (this.successFailureMessage) {
-        this.successFailureMessage.onSubmitFailure();
-      }
-      this.outcome.show(false); // Record failed submission
+      this.showForm = false;
+      this.lastWasSuccess = false;
+      this.outcome.show(false);
+      setTimeout(() => {
+        if (this.successFailureMessage) {
+          this.successFailureMessage.onSubmitFailure();
+        }
+      }, 0);
+    }
+  });
+
+  // Restore form when cooldown ends (success case)
+  private readonly _cooldownEffect = effect(() => {
+    const seconds = this.cooldownSeconds();
+    if (seconds === 0 && this.lastWasSuccess && !this.showForm) {
+      this.showForm = true;
+      this.lastWasSuccess = false;
     }
   });
 
@@ -155,6 +177,12 @@ export class ContactComponent {
 
   isRateLimited(): boolean {
     return this.emailService.isRateLimited();
+  }
+
+  onResetForm(): void {
+    this.showForm = true;
+    this.contactForm.reset();
+    this.contactStore.clearErrors();
   }
 }
 

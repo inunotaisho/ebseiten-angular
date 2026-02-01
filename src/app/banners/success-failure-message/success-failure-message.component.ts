@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { SocialMediaItems } from '../../models';
 
@@ -15,6 +15,8 @@ import { SocialMediaItems } from '../../models';
   styleUrl: './success-failure-message.component.scss'
 })
 export class SuccessFailureMessageComponent implements OnInit, OnDestroy {
+  @Output() resetForm = new EventEmitter<void>();
+
   socialMediaItems!: SocialMediaItems[];
   showSuccessMsg = false;
   showErrorMsg = false;
@@ -60,29 +62,38 @@ export class SuccessFailureMessageComponent implements OnInit, OnDestroy {
     ];
   }
 
+  /**
+   * Called on successful submission. Message stays visible until parent hides it (cooldown ends).
+   */
   onSubmitSuccess() {
     this.showSuccessMsg = true;
     this.showErrorMsg = false;
-    this.startClearTimer();
+    this.cancelClearTimer();
   }
 
+  /**
+   * Called on failed submission. Message auto-clears after 5 seconds and notifies parent.
+   */
   onSubmitFailure() {
     this.showErrorMsg = true;
     this.showSuccessMsg = false;
-    this.startClearTimer();
+    this.startFailureClearTimer();
   }
 
-  private startClearTimer(): void {
-    // Clear any existing timer
+  private cancelClearTimer(): void {
     if (this.clearTimer) {
       clearTimeout(this.clearTimer);
+      this.clearTimer = null;
     }
-    
-    // Set timer to clear messages after 5 seconds
+  }
+
+  private startFailureClearTimer(): void {
+    this.cancelClearTimer();
     this.clearTimer = setTimeout(() => {
       this.showSuccessMsg = false;
       this.showErrorMsg = false;
       this.clearTimer = null;
+      this.resetForm.emit();
     }, 5000);
   }
 
