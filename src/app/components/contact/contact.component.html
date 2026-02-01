@@ -8,10 +8,10 @@
   <div class="container">
     <div class="row">
       <div class="offset-lg-1 col-lg-10">
-        <!-- Form when not complete end -->
-        <app-success-failure-message />
-        <!-- Form when not complete -->
-        <div class="card panel-default">
+        <!-- Success/failure message replaces form when submission settles -->
+        <app-success-failure-message *ngIf="!showForm" (resetForm)="onResetForm()" />
+        <!-- Contact form -->
+        <div *ngIf="showForm" class="card panel-default">
           <div class="card-header head-ctm">
             <h2 class="card-title">{{'ContactComponent-TITLE'| translate}}</h2>
           </div>
@@ -82,7 +82,6 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>
